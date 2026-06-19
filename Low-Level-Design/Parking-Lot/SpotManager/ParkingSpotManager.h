@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <mutex>
-#include "ParkingSpot.h"
-#include "ParkingSpotLookupStrategy.h"
+#include "../ParkingSpot/ParkingSpot.h"
+#include "../LookupStrategy/ParkingSpotLookupStrategy.h"
 
 class ParkingSpotManager {
   private:

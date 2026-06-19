@@ -3,17 +3,17 @@
 #include <vector>
 #include <unordered_map>
 #include <stdexcept>
-#include "ParkingSpotManager.h"
-#include "../vehicle/Vehicle.h"
+#include "../SpotManager/ParkingSpotManager.h"
+#include "../Vehicle/Vehicle.h"
 
 class ParkingLevel {
   private:
     int levelNumber;
     std::unordered_map<VehicleType, ParkingSpotManager*> spotManagers;
   public:
-    ParkingLevel(int number, VehicleType type, std::vector<ParkingSpotManager*> managers){
+    ParkingLevel(int number, std::unordered_map<VehicleType, ParkingSpotManager*> managers){
       levelNumber = number;
-      spotManagers[type] = managers[0];
+      spotManagers = managers;
     }
 
     bool hasAvailability(VehicleType type){

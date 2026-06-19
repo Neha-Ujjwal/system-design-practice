@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "ParkingSpot.h"
+#include "../ParkingSpot/ParkingSpot.h"
 #include <vector>
 
 class ParkingSpotLookupStrategy {

@@ -2,8 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
-#include "ParkingLevel.h"
-#include "Ticket.h"
+#include "../ParkingLevel/ParkingLevel.h"
+#include "../Ticket/Ticket.h"
 
 class ParkingBuilding {
   private:

@@ -1,7 +1,7 @@
 #pragma once
-#include "ParkingSpot.h"
-#include "ParkingLevel.h"
-#include "vehicle/Vehicle.h"
+#include "../ParkingSpot/ParkingSpot.h"
+#include "../ParkingLevel/ParkingLevel.h"
+#include "../Vehicle/Vehicle.h"
 
 class Ticket{
   private:

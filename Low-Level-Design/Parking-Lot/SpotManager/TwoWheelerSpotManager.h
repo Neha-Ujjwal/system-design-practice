@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "ParkingSpotManager.h"
+#include "../SpotManager/ParkingSpotManager.h"
 
 class TwoWheelerSpotManager: public ParkingSpotManager {
 public:

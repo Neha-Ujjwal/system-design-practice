@@ -1,7 +1,7 @@
 #pragma once
 #include "Gate.h"
-#include "../ticket/Ticket.h"
-#include "../vehicle/Vehicle.h"
+#include "../Ticket/Ticket.h"
+#include "../Vehicle/Vehicle.h"
 #include "../Building/ParkingBuilding.h"
 
 class EntranceGate: public Gate {
