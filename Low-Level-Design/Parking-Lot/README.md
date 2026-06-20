@@ -44,6 +44,9 @@ clang++ -std=c++17 main.cpp -o parking_simulation && ./parking_simulation
 
 ### Execution Log Output
 
+![Execution Screenshot] <img width="968" height="476" alt="image" src="https://github.com/user-attachments/assets/52824af6-4627-48c5-9458-ce2ac5120624" />
+
+
 ```text
 === SIMULATION: VEHICLES ARRIVING ===
 Allocated spot L1T1 for vehicle TW123
