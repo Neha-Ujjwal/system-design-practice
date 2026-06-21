@@ -1,7 +1,3 @@
-Here is a complete, professional, and comprehensive `README.md` for your **Snake and Ladder Low-Level Design** repository. It highlights your dynamic board sizing, variable dice counts, and multi-player capacity.
-
-You can copy and paste this directly into your file:
-
 ```markdown
 # Dynamic Snake and Ladder Game (Low-Level Design)
 
