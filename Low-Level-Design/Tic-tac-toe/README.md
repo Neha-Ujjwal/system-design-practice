@@ -1,7 +1,3 @@
-Here is the complete, raw Markdown content for your Tic-Tac-Toe `README.md`. It includes the project layout, object-oriented architecture details, compilation instructions, and your exact successful execution log.
-
-You can copy and paste this directly into your file:
-
 ```text
 # Tic-Tac-Toe Game (Low-Level Design)
 
