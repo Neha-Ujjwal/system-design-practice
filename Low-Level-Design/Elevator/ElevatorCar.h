@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Enums.h";
+#include "Enums.h"
 
 class ElevatorCar {
   private:
@@ -10,11 +10,11 @@ class ElevatorCar {
     ElevatorState currentState;
   public:
     // constructor
-    ElevatorCar(int id, int floor, Direction dir, ElevatorState state){
+    ElevatorCar(int id, int floor){
       this->id = id;
       currentFloor = floor;
-      currentDirection = dir;
-      currentState = state;
+      currentDirection = Direction::NONE;
+      currentState = ElevatorState::IDLE;
     }
 
     //getter methods

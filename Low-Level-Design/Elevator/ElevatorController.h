@@ -64,16 +64,14 @@ class ElevatorController {
             int nextFloor = upMinHeap.top();
             upMinHeap.pop();
 
-            std::cout << "Elevator " << elevatorCar->getId() << " moving UP from floor " 
-                        << elevatorCar->getCurrentFloor() << " to floor " << nextFloor << ".\n";
+            std::string physicalDir = (nextFloor >= elevatorCar->getCurrentFloor()) ? "UP" : "DOWN";
+
+            std::cout << "Elevator " << elevatorCar->getId() << " moving " << physicalDir 
+                      << " from floor " << elevatorCar->getCurrentFloor() << " to floor " << nextFloor << ".\n";
             
             elevatorCar->setCurrentFloor(nextFloor);
             std::cout << "Elevator " << elevatorCar->getId() << " arrived at floor " << nextFloor << ". Doors Open -> Close.\n";
           }
-
-          // Reset state once the upward sweep finishes
-          elevatorCar->setCurrentState(ElevatorState::IDLE);
-          elevatorCar->setCurrentDirection(Direction::NONE);
         }
 
         if(elevatorCar->getCurrentDirection() == Direction::DOWN || !downMaxHeap.empty()){
@@ -84,17 +82,35 @@ class ElevatorController {
              int nextFloor = downMaxHeap.top();
              downMaxHeap.pop();
 
-              std::cout << "Elevator " << elevatorCar->getId() << " moving DOWN from floor " 
-                        << elevatorCar->getCurrentFloor() << " to floor " << nextFloor << ".\n";
+              std::string physicalDir = (nextFloor >= elevatorCar->getCurrentFloor()) ? "UP" : "DOWN";
+
+              std::cout << "Elevator " << elevatorCar->getId() << " moving " << physicalDir 
+                        << " from floor " << elevatorCar->getCurrentFloor() << " to floor " << nextFloor << ".\n";
               
               elevatorCar->setCurrentFloor(nextFloor);
               std::cout << "Elevator " << elevatorCar->getId() << " arrived at floor " << nextFloor << ". Doors Open -> Close.\n";
           }
-
-          // Reset state once the downward sweep finishes
-          elevatorCar->setCurrentState(ElevatorState::IDLE);
-          elevatorCar->setCurrentDirection(Direction::NONE);
         }
       }
+
+      elevatorCar->setCurrentState(ElevatorState::IDLE);
+      elevatorCar->setCurrentDirection(Direction::NONE);
     }
+
+    void addInternalRequest(int targetFloor) {
+      int currentFloor = elevatorCar->getCurrentFloor();
+      
+      if (targetFloor > currentFloor) {
+          upMinHeap.push(targetFloor);
+          std::cout << "Inside Elevator " << elevatorCar->getId() 
+                    << ": Passenger pressed destination Floor " << targetFloor << " (Queued UP).\n";
+      } else if (targetFloor < currentFloor) {
+          downMaxHeap.push(targetFloor);
+          std::cout << "Inside Elevator " << elevatorCar->getId() 
+                    << ": Passenger pressed destination Floor " << targetFloor << " (Queued DOWN).\n";
+      } else {
+          std::cout << "Inside Elevator " << elevatorCar->getId() 
+                    << ": Already on Floor " << targetFloor << ". Doors opening.\n";
+      }
+  }
 };

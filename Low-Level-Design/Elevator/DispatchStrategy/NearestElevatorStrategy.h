@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "Enums.h"
-#include "ElevatorCar.h"
+#include "../Enums.h"
+#include "../ElevatorCar.h"
 #include "DispatchStrategy.h"
 
 class NearestElevatorStrategy: public DispatchStrategy {
