@@ -41,7 +41,12 @@ class ElevatorController {
     }
 
     void addNewRequest(int floor, Direction dir){
-      if(dir == Direction::UP){
+      if(floor == elevatorCar->getCurrentFloor()){
+        std::cout<< "Elevator is already same floor "<< floor << ".\n";
+        return;
+      }
+      
+      if(floor > elevatorCar->getCurrentFloor()){
         upMinHeap.push(floor);
         std::cout << "Elevator " << elevatorCar->getId() << " queued UP request for Floor " << floor << ".\n";
       }
