@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "Theatre.h"
 #include "Movie.h"
 
@@ -33,7 +34,7 @@ class City {
 
     void showAllAvailableTheatres(Movie* movie){
       for(Theatre* theatre : theatres){
-        if(theatre->isShowAvailable(movie)){
+        if(theatre->showAvailableShows(movie)){
           std::cout<<"Theatre: " << theatre->getTheatreName() << " is available for the movie: " << movie->getMovieName() << std::endl;
         }
       }

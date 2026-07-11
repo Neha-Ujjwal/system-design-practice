@@ -6,20 +6,23 @@
 #include "Screen.h"
 #include "Show.h"
 #include "Movie.h"
-#include "City.h"
 
 class Theatre {
   private:
     int theatreId;
     std::string theatreName;
     std::vector<Screen*> screens;
-    std::unordered_map<std::string, Show*> shows;
+    std::unordered_map<int, Show*> shows;
   public:
-    Theatre(int id, std::string name, std::vector<Screen*> screens, std::unordered_map<std::string, Show*> shows){
+    Theatre(int id, std::string name, std::vector<Screen*> screens, std::unordered_map<int, Show*> shows){
       this->theatreId = id;
       this->theatreName = name;
       this->screens = screens;
       this->shows = shows;
+
+      for(Screen* screen : screens){
+        screen->setTheatre(this);
+      }
     }
 
     int getTheatreId(){
@@ -43,23 +46,15 @@ class Theatre {
       return false;
     }
 
-    bool isSeatAvailable(int screenId, int seatNumber){
-      for(Screen* screen : screens){
-        if(screen->getScreenId() == screenId){
-          return screen->isSeatAvailable(seatNumber);
-        }
-      }
-      return false;
-    }
-
-    bool isShowAvailable(Movie* movie){
+    bool showAvailableShows(Movie* movie){
       for(auto& entry : shows){
         Show* show = entry.second;
         if(show->getMovie()->getMovieName() == movie->getMovieName()){
           std::cout << show->getShowTime() << " " << show->getShowDate() << " " << show->getShowDuration() << std::endl;
+          return true;
         }
       }
-      return true;
+      return false;
     }
 
     void showAllAvailableMovies(){
@@ -76,5 +71,9 @@ class Theatre {
           std::cout << "Show: " << show->getShowTime() << " " << show->getShowDate() << " " << show->getShowDuration() << " is available at " << getTheatreName() << std::endl;
         }
       }
+    }
+
+    Theatre* getTheatre(Show* show){
+      return show->getScreen()->getTheatre();
     }
 };

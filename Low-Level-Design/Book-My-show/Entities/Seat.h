@@ -16,7 +16,6 @@ class Seat {
   private:
     int seatNumber;
     SeatType seatType;
-    SeatStatus seatStatus;
   public:
     Seat(int n, SeatType t){
       seatNumber = n;
@@ -29,9 +28,5 @@ class Seat {
 
     SeatType getSeatType(){
       return seatType;
-    }
-
-    bool isAvailable(){
-      return isAvailable;
     }
 };

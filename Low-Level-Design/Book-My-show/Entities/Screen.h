@@ -2,12 +2,14 @@
 #include <string>
 #include <vector>
 #include "Seat.h"
+class Theatre;
 
 class Screen {
   private:
     int screenId;
     std::string screenName;
     std::vector<Seat*> seats;
+    Theatre* theatre = nullptr; 
   public:
     Screen(int id, std::string name, std::vector<Seat*> seats){
       this->screenId = id;
@@ -19,15 +21,6 @@ class Screen {
       return seats;
     }
 
-    bool isSeatAvailable(int seatNumber){
-      for(Seat* seat : seats){
-        if(seat->getSeatNumber() == seatNumber){
-          return seat->isAvailable();
-        }
-      }
-      return false;
-    }
-
     int getScreenId(){
       return screenId;
     }
@@ -35,4 +28,10 @@ class Screen {
     std::string getScreenName(){
       return screenName;
     }
+
+    void setTheatre(Theatre* t){
+      theatre = t;
+    }
+       
+    Theatre* getTheatre(){ return theatre; }      
 };
